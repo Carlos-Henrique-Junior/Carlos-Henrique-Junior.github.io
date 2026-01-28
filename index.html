@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carlos Henrique | Data Analyst & Python Developer</title>
+  <meta name="description" content="Portfólio de Carlos Henrique, Analista de Dados Júnior especializado em Python, SQL, Power BI e Automação de Processos.">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fontes e Ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!-- Configuração do Tailwind -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'python-blue': '#3776AB',
+            'python-yellow': '#FFD43B',
+          },
+          animation: {
+            'gradient': 'gradient 8s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            gradient: {
+              '0%, 100%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos personalizados */
+    .gradient-bg {
+      background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #60a5fa, #2563eb);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(71, 85, 105, 0.3);
+    }
+    
+    .hover-card { 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-card:hover { 
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    
+    .dark .hover-card:hover { 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    
+    .chip {
+      display: inline-flex; 
+      align-items: center; 
+      padding: 0.375rem 0.875rem;
+      border-radius: 9999px; 
+      font-size: 0.75rem; 
+      font-weight: 600;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.1));
+      color: #2563eb;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .chip:hover {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2));
+      transform: scale(1.05);
+    }
+    
+    .dark .chip { 
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.15));
+      color: #60a5fa; 
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    
+    .skill-bar {
+      height: 8px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 4px;
+      transition: width 1s ease-out;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    @keyframes slideInFromLeft {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInFromRight {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-slide-in-left { animation: slideInFromLeft 0.6s ease-out; }
+    .animate-slide-in-right { animation: slideInFromRight 0.6s ease-out; }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+    
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Efeito de digitação */
+    .typing-effect::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased transition-colors duration-300">
+
+  <!-- HEADER / NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav class="container mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#home" class="text-xl font-bold tracking-tight flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">
+          CH
+        </div>
+        <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+          Carlos Henrique
+        </span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="#about" class="hover:text-blue-600 transition-colors" data-i18n="nav_about">Sobre</a></li>
+        <li><a href="#experience" class="hover:text-blue-600 transition-colors" data-i18n="nav_experience">Experiência</a></li>
+        <li><a href="#projects" class="hover:text-blue-600 transition-colors" data-i18n="nav_projects">Projetos</a></li>
+        <li><a href="#skills" class="hover:text-blue-600 transition-colors" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="#contact" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white rounded-lg transition-all shadow-md hover:shadow-lg" data-i18n="nav_contact">Contato</a></li>
+        
+        <!-- Controles -->
+        <li class="flex items-center gap-3 border-l pl-4 border-gray-300 dark:border-gray-700">
+          <button id="themeToggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+            <i class="fa-solid fa-moon dark:hidden text-gray-600"></i>
+            <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+          </button>
+          <div class="flex text-xs font-bold">
+            <button onclick="changeLang('pt')" class="p-1 hover:text-blue-600 transition-colors" id="btn-pt">PT</button>
+            <span class="mx-1 opacity-50">|</span>
+            <button onclick="changeLang('en')" class="p-1 hover:text-blue-600 transition-colors" id="btn-en">EN</button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Botão Mobile -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-xl hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Menu Mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 absolute w-full left-0 shadow-xl">
+      <ul class="flex flex-col p-4 gap-4">
+        <li><a href="#about" class="block py-2 hover:text-blue-600 transition-colors" onclick="toggleMobileMenu()" data-i18n="nav_about">Sobre</a></li>
+        <li><a href="#experience" class="block py-2 hover:text-blue-600 transition-colors" onclick="toggleMobileMenu()" data-i18n="nav_experience">Experiência</a></li>
+        <li><a href="#projects" class="block py-2 hover:text-blue-600 transition-colors" onclick="toggleMobileMenu()" data-i18n="nav_projects">Projetos</a></li>
+        <li><a href="#skills" class="block py-2 hover:text-blue-600 transition-colors" onclick="toggleMobileMenu()" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="#contact" class="block py-2 font-bold text-blue-600" onclick="toggleMobileMenu()" data-i18n="nav_contact">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-16">
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <!-- Background animado -->
+      <div class="absolute inset-0 gradient-bg opacity-5 dark:opacity-10"></div>
+      <div class="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+      <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1s"></div>
+
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="space-y-6 text-center md:text-left animate-slide-in-left">
+          <div class="inline-block px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-2 border border-blue-200 dark:border-blue-800">
+            <i class="fa-solid fa-chart-line mr-2"></i>
+            <span data-i18n="hero_badge">Data Analyst & Python Developer</span>
+          </div>
+          
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+            <span data-i18n="hero_greeting">Olá, sou o</span> <br/>
+            <span class="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+              Carlos Henrique
+            </span>
+          </h1>
+          
+          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-lg mx-auto md:mx-0 leading-relaxed" data-i18n="hero_desc">
+            Transformo dados brutos em insights estratégicos. Especialista em Python, SQL e Power BI, com forte base em infraestrutura e automação.
+          </p>
+          
+          <!-- Estatísticas rápidas -->
+          <div class="grid grid-cols-3 gap-4 py-6 max-w-md mx-auto md:mx-0">
+            <div class="text-center">
+              <div class="stat-number">3+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Anos TI</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-number">10+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Projetos</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-number">5+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Certificados</div>
+            </div>
+          </div>
+          
+          <!-- Botões de ação -->
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="#projects" class="group px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white rounded-xl shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1 font-semibold flex items-center gap-2">
+              <span data-i18n="hero_cta_projects">Ver Projetos</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            
+            <a href="CARLOS_HENRIQUE.pdf" download class="px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl shadow-md transition-all transform hover:-translate-y-1 font-semibold flex items-center gap-2">
+              <i class="fa-solid fa-download"></i>
+              <span data-i18n="hero_cta_cv">Download CV</span>
+            </a>
+            
+            <!-- Links Sociais -->
+            <div class="flex items-center gap-3 ml-2 pl-4 border-l border-gray-300 dark:border-gray-700">
+              <a href="https://www.linkedin.com/in/carlos-henrique-junior" target="_blank" class="text-2xl text-gray-400 hover:text-[#0077B5] transition-colors" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/Carlos-Henrique-Junior" target="_blank" class="text-2xl text-gray-400 hover:text-black dark:hover:text-white transition-colors" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://wa.me/5521988835047" target="_blank" class="text-2xl text-gray-400 hover:text-[#25D366] transition-colors" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Imagem com efeitos -->
+        <div class="animate-slide-in-right flex justify-center relative">
+          <div class="relative w-72 h-72 md:w-96 md:h-96">
+            <!-- Círculos decorativos -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/20 rounded-full blur-2xl animate-pulse-slow"></div>
+            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
+            
+            <!-- Frame da foto -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-[2.5rem] rotate-6 opacity-20 animate-float"></div>
+            <div class="absolute inset-0 bg-white dark:bg-gray-800 rounded-[2.5rem] rotate-3 shadow-2xl"></div>
+            
+            <!-- Foto -->
+            <img src="img/foto.jpg"
+              alt="Carlos Henrique"
+              class="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-2xl border-4 border-white dark:border-gray-800"
+              onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Carlos+Henrique&background=0D8ABC&color=fff&size=400';"/>
+            
+            <!-- Badge flutuante -->
+            <div class="absolute -bottom-6 -right-6 glass-card text-white px-4 py-3 rounded-2xl shadow-xl backdrop-blur-md">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <div>
+                  <div class="text-xs opacity-80">Disponível para</div>
+                  <div class="font-bold">Oportunidades</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-gray-400 hover:text-blue-600 transition-colors">
+          <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- SOBRE (ABOUT) -->
+    <section id="about" class="py-24 bg-white dark:bg-gray-800/30">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4" data-i18n="about_title">Sobre Mim</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <div class="glass-card p-8 rounded-2xl">
+              <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300" data-i18n="about_text">
+                Com uma base sólida em infraestrutura e suporte técnico, direcionei minha carreira para a <strong>Análise de Dados</strong>. Minha paixão é utilizar a tecnologia para resolver problemas de negócio.<br><br>Hoje, utilizo <strong>Python, SQL e Power BI</strong> para automatizar processos de ETL, modelar bancos de dados e criar dashboards que eliminam o 'achismo' e trazem certeza para a tomada de decisão.
+              </p>
+            </div>
+            
+            <!-- Quick facts -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-900">
+                <i class="fa-solid fa-graduation-cap text-2xl text-blue-600 mb-2"></i>
+                <div class="font-bold">Formação</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">Ciência da Computação</div>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl border border-green-100 dark:border-green-900">
+                <i class="fa-solid fa-location-dot text-2xl text-green-600 mb-2"></i>
+                <div class="font-bold">Localização</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">Rio de Janeiro, RJ</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Estatísticas -->
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl text-center border border-blue-100 dark:border-gray-600 hover-card">
+              <div class="stat-number">90%</div>
+              <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2">Python</div>
+              <div class="skill-bar mt-3" style="width: 90%"></div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl text-center border border-purple-100 dark:border-gray-600 hover-card">
+              <div class="stat-number">85%</div>
+              <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2">SQL & BI</div>
+              <div class="skill-bar mt-3" style="width: 85%"></div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl text-center border border-green-100 dark:border-gray-600 hover-card">
+              <div class="stat-number">80%</div>
+              <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2">DevOps</div>
+              <div class="skill-bar mt-3" style="width: 80%"></div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl text-center border border-orange-100 dark:border-gray-600 hover-card">
+              <div class="stat-number">70%</div>
+              <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2">Cloud & IA</div>
+              <div class="skill-bar mt-3" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIÊNCIA -->
+    <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4" data-i18n="exp_title">Trajetória Profissional</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-300 before:to-transparent dark:before:via-blue-700">
+          <div id="experience-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projects" class="py-24 bg-white dark:bg-gray-800/30">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4" data-i18n="projects_title">Projetos em Destaque</h2>
+          <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" data-i18n="projects_subtitle">
+            Foco em extração de dados, automação e análise para tomada de decisão.
+          </p>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full mt-4"></div>
+        </div>
+        
+        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <!-- Projetos injetados via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4" data-i18n="skills_title">Tech Stack</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div id="skills-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Skills injetadas via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICAÇÕES -->
+    <section id="certifications" class="py-24 bg-white dark:bg-gray-800/30">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4" data-i18n="certs_title">Certificações & Cursos</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div id="certs-container" class="space-y-4">
+          <!-- Certificações injetadas via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 gradient-bg"></div>
+      <div class="absolute inset-0 bg-blue-600/90 dark:bg-blue-900/90"></div>
+      
+      <div class="container mx-auto px-4 text-center text-white relative z-10">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" data-i18n="contact_title">Vamos trabalhar juntos?</h2>
+          <p class="text-blue-100 text-lg mb-10 leading-relaxed" data-i18n="contact_text">
+            Estou pronto para aplicar minhas habilidades de análise de dados para gerar valor para sua empresa.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+            <a href="mailto:chjunior05@gmail.com" class="group inline-flex items-center justify-center gap-3 bg-white text-blue-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl shadow-2xl transition-all transform hover:scale-105">
+              <i class="fa-solid fa-envelope group-hover:rotate-12 transition-transform"></i>
+              <span data-i18n="btn_email">Enviar E-mail</span>
+            </a>
+            <a href="https://wa.me/5521988835047" target="_blank" class="group inline-flex items-center justify-center gap-3 bg-[#25D366] text-white hover:bg-[#20bd5a] font-bold py-4 px-8 rounded-xl shadow-2xl transition-all transform hover:scale-105">
+              <i class="fab fa-whatsapp text-xl group-hover:rotate-12 transition-transform"></i>
+              <span data-i18n="btn_whatsapp">WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/carlos-henrique-junior" target="_blank" class="group inline-flex items-center justify-center gap-3 bg-[#0077B5] text-white hover:bg-[#006399] font-bold py-4 px-8 rounded-xl shadow-2xl transition-all transform hover:scale-105">
+              <i class="fab fa-linkedin text-xl group-hover:rotate-12 transition-transform"></i>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          
+          <!-- Info de contato adicional -->
+          <div class="grid md:grid-cols-3 gap-6 text-left glass-card p-8 rounded-2xl max-w-2xl mx-auto">
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-envelope text-2xl mt-1 text-blue-200"></i>
+              <div>
+                <div class="text-sm text-blue-200 mb-1">E-mail</div>
+                <div class="font-semibold text-sm">chjunior05@gmail.com</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-phone text-2xl mt-1 text-blue-200"></i>
+              <div>
+                <div class="text-sm text-blue-200 mb-1">Telefone</div>
+                <div class="font-semibold text-sm">(21) 98883-5047</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-2xl mt-1 text-blue-200"></i>
+              <div>
+                <div class="text-sm text-blue-200 mb-1">Localização</div>
+                <div class="font-semibold text-sm">Rio de Janeiro, RJ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">
+            CH
+          </div>
+          <div>
+            <div class="font-bold text-white">Carlos Henrique</div>
+            <div class="text-xs">Data Analyst & Python Developer</div>
+          </div>
+        </div>
+        
+        <div class="flex gap-6">
+          <a href="https://www.linkedin.com/in/carlos-henrique-junior" target="_blank" class="hover:text-white transition-colors">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a href="https://github.com/Carlos-Henrique-Junior" target="_blank" class="hover:text-white transition-colors">
+            <i class="fab fa-github text-2xl"></i>
+          </a>
+          <a href="https://wa.me/5521988835047" target="_blank" class="hover:text-white transition-colors">
+            <i class="fab fa-whatsapp text-2xl"></i>
+          </a>
+          <a href="mailto:chjunior05@gmail.com" class="hover:text-white transition-colors">
+            <i class="fa-solid fa-envelope text-2xl"></i>
+          </a>
+        </div>
+        
+        <div class="text-center md:text-right">
+          <p class="text-sm">&copy; <span id="year"></span> Carlos Henrique</p>
+          <p class="text-xs mt-1">Desenvolvido com <i class="fa-solid fa-heart text-red-500"></i> e Python</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button id="scrollTopBtn" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full shadow-lg opacity-0 pointer-events-none transition-all hover:scale-110 z-40">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- SCRIPT UNIFICADO -->
+  <script>
+    // ==========================================
+    // PORTFÓLIO CARLOS HENRIQUE - JavaScript
+    // ==========================================
+
+    // --- TRADUÇÕES ---
+    const translations = {
+        pt: {
+            nav_about: "Sobre",
+            nav_experience: "Experiência",
+            nav_projects: "Projetos",
+            nav_skills: "Skills",
+            nav_contact: "Contato",
+            hero_badge: "Data Analyst & Python Developer",
+            hero_greeting: "Olá, sou o",
+            hero_desc: "Transformo dados brutos em insights estratégicos. Especialista em Python, SQL e Power BI, com forte base em infraestrutura e automação.",
+            hero_cta_projects: "Ver Projetos",
+            hero_cta_cv: "Download CV",
+            about_title: "Sobre Mim",
+            about_text: "Com uma base sólida em infraestrutura e suporte técnico, direcionei minha carreira para a <strong>Análise de Dados</strong>. Minha paixão é utilizar a tecnologia para resolver problemas de negócio.<br><br>Hoje, utilizo <strong>Python, SQL e Power BI</strong> para automatizar processos de ETL, modelar bancos de dados e criar dashboards que eliminam o 'achismo' e trazem certeza para a tomada de decisão.",
+            exp_title: "Trajetória Profissional",
+            projects_title: "Projetos em Destaque",
+            projects_subtitle: "Foco em extração de dados, automação e análise para tomada de decisão.",
+            skills_title: "Tech Stack",
+            certs_title: "Certificações & Cursos",
+            contact_title: "Vamos trabalhar juntos?",
+            contact_text: "Estou pronto para aplicar minhas habilidades de análise de dados para gerar valor para sua empresa.",
+            btn_email: "Enviar E-mail",
+            btn_whatsapp: "WhatsApp",
+            view_code: "Ver Código",
+            view_deploy: "Ver Deploy",
+            ongoing: "Atual"
+        },
+        en: {
+            nav_about: "About",
+            nav_experience: "Experience",
+            nav_projects: "Projects",
+            nav_skills: "Skills",
+            nav_contact: "Contact",
+            hero_badge: "Data Analyst & Python Developer",
+            hero_greeting: "Hi, I am",
+            hero_desc: "Transforming raw data into strategic insights. Specialist in Python, SQL, and Power BI with a strong background in infrastructure.",
+            hero_cta_projects: "View Projects",
+            hero_cta_cv: "Download CV",
+            about_title: "About Me",
+            about_text: "With a solid foundation in infrastructure and technical support, I pivoted my career towards <strong>Data Analysis</strong>. My passion is using technology to solve business problems.<br><br>Today, I use <strong>Python, SQL, and Power BI</strong> to automate ETL processes, model databases, and create dashboards that remove guesswork and bring certainty to decision-making.",
+            exp_title: "Professional Journey",
+            projects_title: "Featured Projects",
+            projects_subtitle: "Focus on data extraction, automation, and decision-making analysis.",
+            skills_title: "Tech Stack",
+            certs_title: "Certifications & Courses",
+            contact_title: "Let's work together?",
+            contact_text: "I'm ready to apply my data analysis skills to generate value for your company.",
+            btn_email: "Send E-mail",
+            btn_whatsapp: "WhatsApp",
+            view_code: "View Code",
+            view_deploy: "Live Demo",
+            ongoing: "Present"
+        }
+    };
+
+    // --- DADOS DOS PROJETOS ---
+    const projectsData = [
+        {
+            title: "Dashboard de Salários - Data Market",
+            desc: {
+                pt: "Ferramenta de inteligência de mercado desenvolvida para eliminar a assimetria de informações salariais. Utilizei <strong>Python (Pandas)</strong> para ETL e <strong>Power BI</strong> para revelar tendências de remuneração.",
+                en: "Market intelligence tool designed to eliminate salary information asymmetry. Used <strong>Python (Pandas)</strong> for ETL and <strong>Power BI</strong> to reveal compensation trends."
+            },
+            tags: ["Python", "Pandas", "Power BI", "Streamlit", "ETL"],
+            links: {
+                github: "https://github.com/Carlos-Henrique-Junior/Dashboard_de_Salarios_Area_de_Dados",
+                deploy: "https://dashboarddesalariosareadedado.streamlit.app"
+            },
+            icon: "fa-chart-line",
+            color: "from-blue-500 to-cyan-500"
+        },
+        {
+            title: "API Backend - Gestão de Dados",
+            desc: {
+                pt: "Arquitetura Backend focada em integridade de dados. Estrutura de BD que suporta relações complexas, facilitando extrações analíticas via <strong>SQL</strong>.",
+                en: "Backend architecture focused on data integrity. Database structure supporting complex relationships, facilitating analytical extractions via <strong>SQL</strong>."
+            },
+            tags: ["Python", "FastAPI", "PostgreSQL", "Docker", "API REST"],
+            links: {
+                github: "https://github.com/Carlos-Henrique-Junior/desafio-backend-voluntarios",
+                deploy: "https://desafio-backend-voluntarios.onrender.com/docs"
+            },
+            icon: "fa-database",
+            color: "from-purple-500 to-pink-500"
+        },
+        {
+            title: "Calculadora de IMC com Python",
+            desc: {
+                pt: "Aplicação interativa para cálculo de IMC (Índice de Massa Corporal). Foca em estruturas de controle, validação de dados e interface amigável via terminal ou GUI simples.",
+                en: "Interactive BMI (Body Mass Index) calculator application. Focuses on control structures, data validation, and user-friendly interface via terminal or simple GUI."
+            },
+            tags: ["Python", "Logic", "Math", "Beginner Friendly"],
+            links: {
+                github: "https://github.com/Carlos-Henrique-Junior/imc-app-python",
+                deploy: null
+            },
+            icon: "fa-calculator",
+            color: "from-green-500 to-teal-500"
+        }
+    ];
+
+    // --- DADOS DA EXPERIÊNCIA ---
+    const experienceData = [
+        {
+            role: { pt: "Estagiário de TI", en: "IT Intern" },
+            company: "PGE-RJ – Procuradoria Geral do Estado",
+            period: "03/2024",
+            ongoing: true,
+            desc: {
+                pt: "Implemento, configuro e administro <strong>Zabbix</strong> para monitoramento. Desenvolvo dashboards no <strong>Grafana</strong> e automatizo processos com <strong>Python</strong>. Construo painéis no <strong>Power BI</strong> para análise estratégica.",
+                en: "Implement, configure and administer <strong>Zabbix</strong> for monitoring. Develop <strong>Grafana</strong> dashboards and automate processes with <strong>Python</strong>. Build <strong>Power BI</strong> panels for strategic analysis."
+            },
+            icon: "fa-briefcase",
+            color: "blue"
+        },
+        {
+            role: { pt: "Técnico de Suporte Júnior", en: "Junior Support Tech" },
+            company: "CREB – Centro de Reumatologia",
+            period: "12/2021 - 12/2023",
+            ongoing: false,
+            desc: {
+                pt: "Prestei suporte técnico em TI. Resolvi incidentes e prestei suporte aos sistemas <strong>Tasy</strong> e <strong>GLPI</strong>. Implementei melhorias em processos de suporte técnico.",
+                en: "Provided technical IT support. Resolved incidents and supported <strong>Tasy</strong> and <strong>GLPI</strong> systems. Implemented improvements in technical support processes."
+            },
+            icon: "fa-hospital",
+            color: "green"
+        },
+        {
+            role: { pt: "Estagiário de TI - Informática", en: "IT Intern - Computer Area" },
+            company: "Ciob – Centro de Integração Objetivo",
+            period: "01/2020 - 12/2020",
+            ongoing: false,
+            desc: {
+                pt: "Realizei manutenção de computadores. Ministrei cursos de <strong>Pacote Office</strong>. Configurei redes e cabeamento. Treinei alunos em ferramentas digitais.",
+                en: "Performed computer maintenance. Taught <strong>Office Suite</strong> courses. Configured networks and cabling. Trained students in digital tools."
+            },
+            icon: "fa-graduation-cap",
+            color: "purple"
+        }
+    ];
+
+    // --- DADOS DAS SKILLS ---
+    const skillsData = [
+        {
+            category: { pt: "Análise de Dados", en: "Data Analysis" },
+            icon: "fa-chart-pie",
+            color: "blue",
+            items: [
+                { name: "Python (Pandas/NumPy)", level: 90 },
+                { name: "Power BI (DAX)", level: 85 },
+                { name: "SQL Avançado", level: 85 },
+                { name: "ETL & Data Pipeline", level: 80 },
+                { name: "Excel Avançado", level: 80 }
+            ]
+        },
+        {
+            category: { pt: "Bancos de Dados", en: "Databases" },
+            icon: "fa-database",
+            color: "green",
+            items: [
+                { name: "MySQL", level: 85 },
+                { name: "PostgreSQL", level: 80 },
+                { name: "MongoDB", level: 70 },
+                { name: "SQLite", level: 75 }
+            ]
+        },
+        {
+            category: { pt: "Infra & DevOps", en: "Infra & DevOps" },
+            icon: "fa-server",
+            color: "purple",
+            items: [
+                { name: "Shell Script", level: 80 },
+                { name: "Docker", level: 75 },
+                { name: "Zabbix & Grafana", level: 85 },
+                { name: "Linux", level: 80 },
+                { name: "Git/GitHub", level: 85 }
+            ]
+        },
+        {
+            category: { pt: "Desenvolvimento", en: "Development" },
+            icon: "fa-code",
+            color: "orange",
+            items: [
+                { name: "Python (FastAPI/Django)", level: 85 },
+                { name: "JavaScript", level: 70 },
+                { name: "HTML/CSS", level: 75 },
+                { name: "API REST", level: 80 }
+            ]
+        },
+        {
+            category: { pt: "Cloud & IA", en: "Cloud & AI" },
+            icon: "fa-cloud",
+            color: "cyan",
+            items: [
+                { name: "AWS (Estudos)", level: 65 },
+                { name: "Azure (Estudos)", level: 65 },
+                { name: "Machine Learning", level: 60 },
+                { name: "TensorFlow", level: 55 }
+            ]
+        },
+        {
+            category: { pt: "Business Intelligence", en: "Business Intelligence" },
+            icon: "fa-chart-line",
+            color: "yellow",
+            items: [
+                { name: "Power BI", level: 90 },
+                { name: "Dashboards", level: 85 },
+                { name: "Storytelling com Dados", level: 80 },
+                { name: "KPIs & Métricas", level: 85 }
+            ]
+        }
+    ];
+
+    // --- CERTIFICAÇÕES ---
+    const certsData = [
+        {
+            title: "Análise de Dados & BI",
+            icon: "fa-chart-bar",
+            color: "blue",
+            items: [
+                "Formação Power BI Completa – DIO.me",
+                "Python para Data Science – Estácio",
+                "Imersão de Dados – Alura",
+                "Análise de Dados para Tomada de Decisão – Estácio"
+            ]
+        },
+        {
+            title: "Infraestrutura & DevOps",
+            icon: "fa-server",
+            color: "green",
+            items: [
+                "Zabbix do Básico ao Avançado – Udemy",
+                "Docker Essentials – DIO.me",
+                "Fundamentos de Redes – DIO.me",
+                "Sistemas Operacionais Linux – DIO.me"
+            ]
+        },
+        {
+            title: "Desenvolvimento & Programação",
+            icon: "fa-code",
+            color: "purple",
+            items: [
+                "Python: Ambiente e Primeiros Passos – DIO.me",
+                "Engenharia de Dados com Python – DIO.me",
+                "Desenvolvimento Web Django – DIO.me",
+                "Fundamentos de Lógica de Programação – DIO.me"
+            ]
+        },
+        {
+            title: "Formação Acadêmica",
+            icon: "fa-graduation-cap",
+            color: "orange",
+            items: [
+                "Bacharel em Ciência da Computação – UNESA (2025)",
+                "Técnico em Informática – Ciob (2018)"
+            ]
+        }
+    ];
+
+    // --- ESTADO GLOBAL ---
+    let currentLang = localStorage.getItem('lang') || 'pt';
+
+    // --- FUNÇÕES DE RENDERIZAÇÃO ---
+
+    function renderAll() {
+        renderTexts();
+        renderProjects();
+        renderExperience();
+        renderSkills();
+        renderCerts();
+    }
+
+    function renderTexts() {
+        const t = translations[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) el.innerHTML = t[key];
+        });
+
+        document.getElementById('btn-pt').classList.toggle('text-blue-600', currentLang === 'pt');
+        document.getElementById('btn-pt').classList.toggle('font-bold', currentLang === 'pt');
+        document.getElementById('btn-en').classList.toggle('text-blue-600', currentLang === 'en');
+        document.getElementById('btn-en').classList.toggle('font-bold', currentLang === 'en');
+    }
+
+    function renderProjects() {
+        const container = document.getElementById('projects-container');
+        container.innerHTML = projectsData.map(proj => `
+            <article class="group bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 hover-card flex flex-col h-full relative overflow-hidden">
+                <!-- Gradiente de fundo -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${proj.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-2xl"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${proj.color} flex items-center justify-center text-white shadow-lg">
+                            <i class="fa-solid ${proj.icon} text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg leading-tight flex-1">${proj.title}</h3>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-grow leading-relaxed">
+                        ${proj.desc[currentLang]}
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        ${proj.tags.map(tag => `<span class="chip">${tag}</span>`).join('')}
+                    </div>
+                    
+                    <div class="flex gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                        <a href="${proj.links.github}" target="_blank" class="flex items-center gap-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                            <span>${translations[currentLang].view_code}</span>
+                        </a>
+                        ${proj.links.deploy ? `
+                        <a href="${proj.links.deploy}" target="_blank" class="flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700 transition-colors">
+                            <i class="fa-solid fa-rocket"></i>
+                            <span>${translations[currentLang].view_deploy}</span>
+                        </a>` : ''}
+                    </div>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    function renderExperience() {
+        const container = document.getElementById('experience-container');
+        container.innerHTML = experienceData.map((exp, index) => {
+            const colorMap = {
+                blue: 'bg-blue-100 dark:bg-blue-900 text-blue-600 border-blue-200 dark:border-blue-800',
+                green: 'bg-green-100 dark:bg-green-900 text-green-600 border-green-200 dark:border-green-800',
+                purple: 'bg-purple-100 dark:bg-purple-900 text-purple-600 border-purple-200 dark:border-purple-800',
+                orange: 'bg-orange-100 dark:bg-orange-900 text-orange-600 border-orange-200 dark:border-orange-800'
+            };
+            
+            return `
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <!-- Ícone Timeline -->
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white dark:border-gray-900 ${colorMap[exp.color]} shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow-lg">
+                        <i class="fa-solid ${exp.icon}"></i>
+                    </div>
+                    
+                    <!-- Card de Experiência -->
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md hover-card">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-lg pr-4">${exp.role[currentLang]}</h3>
+                            ${exp.ongoing ? 
+                                `<span class="text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full border border-green-200 dark:border-green-800">
+                                    <i class="fa-solid fa-circle text-[6px] mr-1 animate-pulse"></i>
+                                    ${translations[currentLang].ongoing}
+                                </span>` :
+                                `<span class="text-xs font-mono bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-gray-600 dark:text-gray-400">${exp.period}</span>`
+                            }
+                        </div>
+                        
+                        <div class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-building text-xs"></i>
+                            ${exp.company}
+                        </div>
+                        
+                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            ${exp.desc[currentLang]}
+                        </p>
+                        
+                        ${exp.ongoing ? `
+                        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                            <div class="text-xs text-gray-500">
+                                <i class="fa-solid fa-clock mr-1"></i>
+                                ${exp.period} - ${translations[currentLang].ongoing}
+                            </div>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderSkills() {
+        const container = document.getElementById('skills-container');
+        const colorMap = {
+            blue: 'from-blue-500 to-cyan-500',
+            green: 'from-green-500 to-emerald-500',
+            purple: 'from-purple-500 to-pink-500',
+            orange: 'from-orange-500 to-red-500',
+            cyan: 'from-cyan-500 to-blue-500',
+            yellow: 'from-yellow-500 to-orange-500'
+        };
+        
+        container.innerHTML = skillsData.map(cat => `
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 hover-card">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br ${colorMap[cat.color]} rounded-xl flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid ${cat.icon} text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">${cat.category[currentLang]}</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    ${cat.items.map(item => `
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">${item.name}</span>
+                                <span class="text-gray-500 dark:text-gray-400 font-semibold">${item.level}%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r ${colorMap[cat.color]} rounded-full transition-all duration-1000 ease-out" style="width: ${item.level}%"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderCerts() {
+        const container = document.getElementById('certs-container');
+        const colorMap = {
+            blue: 'from-blue-500 to-cyan-500',
+            green: 'from-green-500 to-emerald-500',
+            purple: 'from-purple-500 to-pink-500',
+            orange: 'from-orange-500 to-red-500'
+        };
+        
+        container.innerHTML = certsData.map(cat => `
+            <details class="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+                <summary class="flex justify-between items-center p-6 cursor-pointer font-semibold hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br ${colorMap[cat.color]} rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid ${cat.icon}"></i>
+                        </div>
+                        <span class="text-lg">${cat.title}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180 text-gray-400"></i>
+                </summary>
+                
+                <div class="px-6 pb-6 pt-2">
+                    <div class="grid gap-3">
+                        ${cat.items.map(item => `
+                            <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                                <i class="fa-solid fa-certificate text-blue-600 dark:text-blue-400 mt-1"></i>
+                                <span class="text-sm text-gray-700 dark:text-gray-300">${item}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </details>
+        `).join('');
+    }
+
+    // --- CONTROLES ---
+
+    function changeLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        renderAll();
+    }
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    }
+
+    themeBtn.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Mobile Menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('hidden');
+    }
+
+    mobileBtn.addEventListener('click', toggleMobileMenu);
+
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            scrollTopBtn.classList.add('opacity-100');
+        } else {
+            scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            scrollTopBtn.classList.remove('opacity-100');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth Scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Fecha menu mobile se estiver aberto
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+    });
+
+    // Ano no Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Inicialização
+    renderAll();
+
+    // ScrollReveal Animations
+    if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().reveal('section h2', {
+            delay: 200,
+            distance: '30px',
+            origin: 'bottom',
+            duration: 600
+        });
+        
+        ScrollReveal().reveal('.hover-card', {
+            interval: 150,
+            distance: '40px',
+            origin: 'bottom',
+            duration: 600
+        });
+        
+        ScrollReveal().reveal('.stat-number', {
+            interval: 100,
+            distance: '20px',
+            origin: 'bottom',
+            scale: 0.9
+        });
+    }
+
+    // Animação das barras de progresso quando visíveis
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bars = entry.target.querySelectorAll('.skill-bar');
+                bars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('style').match(/width:\s*(\d+%)/)[1];
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Observa a seção de skills
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        observer.observe(skillsSection);
+    }
+
+    console.log('%c👨‍💻 Portfólio desenvolvido por Carlos Henrique', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+    console.log('%c🐍 Python | 📊 Data Analysis | ☁️ Cloud', 'color: #60a5fa; font-size: 12px;');
+  </script>
+</body>
+</html>
