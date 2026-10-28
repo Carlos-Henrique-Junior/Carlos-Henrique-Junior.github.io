@@ -154,12 +154,20 @@ Este repositório contém o código-fonte do meu portfólio profissional, focado
 
 ---
 
-## 📁 Estrutura de arquivos (sugerida)
+## 📁 Estrutura de arquivos
 
 ```text
 /
-├─ index.html            # Arquivo principal do portfólio
+├─ index.html
+├─ assets/
+│  ├─ css/
+│  │  └─ styles.css
+│  └─ js/
+│     ├─ tailwind-config.js
+│     ├─ data.js
+│     └─ app.js
 ├─ img/
-│  └─ foto.jpg           # Foto de perfil utilizada no Hero
-├─ CARLOS_HENRIQUE.pdf   # Currículo para download
-└─ README.md             # Este arquivo
+│  └─ foto.jpg
+├─ Carlos Henrique Jr..pdf
+└─ README.md
+```
