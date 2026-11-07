@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main %}
+<article class="section project-page" data-section="projeto">
+  <div class="wrap project-page__grid">
+    <header class="project-page__head">
+      <a class="link project-page__back" href="/#projetos">{{ t.project_back }}</a>
+      <p class="eyebrow">{{ projeto.index }} / {{ projeto.kind }} · {{ projeto.year }}</p>
+      <h1 class="h1">{{ projeto.title[lang] }}</h1>
+      <p class="hero__lead">{{ projeto.summary[lang] }}</p>
+    </header>
+
+    <div class="project-page__body">
+      <h2 class="h3">{{ t.project_about }}</h2>
+      {% for paragraph in projeto.body[lang] %}<p>{{ paragraph }}</p>{% endfor %}
+    </div>
+
+    <aside class="project-page__side">
+      <h2 class="h3">{{ t.project_stack }}</h2>
+      <ul class="tags">{% for tech in projeto.stack %}<li>{{ tech }}</li>{% endfor %}</ul>
+      <h2 class="h3">{{ t.project_links }}</h2>
+      <ul class="project-page__links">
+        {% for link in projeto.links %}
+        <li><a class="btn btn--sm" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label[lang] }} ↗</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </div>
+
+  <div class="wrap project-page__nav">
+    {% for other in projects if other.slug != projeto.slug %}
+    <a class="link" href="/projetos/{{ other.slug }}">{{ other.index }} · {{ other.title[lang] }}</a>
+    {% endfor %}
+  </div>
+</article>
+{% endblock %}

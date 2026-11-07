@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section id="inicio" class="hero section" data-section="início">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ t.hero_eyebrow }}</p>
+      <h1 class="hero__title" data-split>{{ profile.nome }}</h1>
+      <p class="hero__role">{{ t.hero_role }}</p>
+      <p class="hero__lead">{{ t.hero_summary }}</p>
+      <div class="hero__cta">
+        <a class="btn" href="#projetos"><span>{{ t.hero_cta1 }}</span></a>
+        <a class="btn btn--ghost" href="#api"><span>{{ t.hero_cta2 }}</span></a>
+        <a class="link" href="/{{ profile.cv }}" download>{{ t.hero_cv }}</a>
+      </div>
+      <ul class="focus">
+        {% for item in t.hero_focus %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+      <p class="avail"><span class="avail__dot" aria-hidden="true"></span>{{ t.available }}</p>
+    </div>
+    <figure class="portrait">
+      <div class="portrait__frame">
+        <img src="{{ asset('img/foto.jpg') }}" alt="{{ profile.nome }}" width="420" height="520" fetchpriority="high">
+      </div>
+      <figcaption>
+        <span class="portrait__mark" aria-hidden="true">CH</span>
+        <span><strong>{{ profile.local[lang] }}</strong><small>Python · LLM · API</small></span>
+      </figcaption>
+    </figure>
+  </div>
+  <a class="scroll" href="#sobre" aria-label="Rolar"><span class="blink">{{ t.scroll }}</span></a>
+</section>
+
+<section id="sobre" class="section section--alt" data-section="sobre">
+  <div class="wrap about">
+    <div class="about__head">
+      <p class="eyebrow">{{ t.about_eyebrow }}</p>
+      <h2 class="h2">{{ t.about_title }}</h2>
+    </div>
+    <div class="about__body">
+      {% for p in t.about_body %}<p>{{ p }}</p>{% endfor %}
+      <dl class="facts">
+        <div><dt>{{ t.facts.formacao }}</dt><dd>{{ t.fact_values.formacao }}</dd></div>
+        <div><dt>{{ t.facts.idiomas }}</dt><dd>{{ t.fact_values.idiomas }}</dd></div>
+        <div><dt>{{ t.facts.interesses }}</dt><dd>{{ t.fact_values.interesses }}</dd></div>
+      </dl>
+      <ul class="stats">
+        {% for num, label in t.stats %}
+        <li><span class="stats__num" data-count="{{ num }}">0</span><span class="stats__label">{{ label }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" class="section" data-section="experiência">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow">{{ t.exp_eyebrow }}</p>
+        <h2 class="h2">{{ t.exp_title }}</h2>
+      </div>
+      <p class="head-row__note">{{ t.exp_note }}</p>
+    </div>
+    <ol class="tl">
+      {% for job in experience %}
+      <li class="tl__item">
+        <span class="tl__dot" aria-hidden="true"></span>
+        <p class="tl__date">{{ job.period }}</p>
+        <h3>{{ job.role[lang] }}</h3>
+        <p class="tl__company">{{ job.company }}</p>
+        <p class="tl__desc">{{ job.desc[lang] }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section id="projetos" class="section section--alt" data-section="projetos">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow">{{ t.proj_eyebrow }}</p>
+        <h2 class="h2">{{ t.proj_title }}</h2>
+      </div>
+      <p class="head-row__note">{{ t.proj_note }}</p>
+    </div>
+    <div class="projects">
+      {% for p in projects %}
+      <article class="card">
+        <p class="card__index">{{ p.index }} / {{ p.kind }}</p>
+        <h3 class="card__title"><a href="/projetos/{{ p.slug }}">{{ p.title[lang] }}</a></h3>
+        <p class="card__desc">{{ p.summary[lang] }}</p>
+        <ul class="tags">{% for tech in p.stack %}<li>{{ tech }}</li>{% endfor %}</ul>
+        <a class="card__more" href="/projetos/{{ p.slug }}">{{ t.proj_open }} →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="api" class="section" data-section="api">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow">{{ t.api_eyebrow }}</p>
+        <h2 class="h2">{{ t.api_title }}</h2>
+      </div>
+      <p class="head-row__note">{{ t.api_sub }} <a class="link" href="/api/docs">openapi ↗</a></p>
+    </div>
+
+    <div class="console" id="console">
+      <aside class="console__side">
+        <p class="console__group">endpoints</p>
+        <div id="endpoints" role="tablist" aria-label="Endpoints">
+          <noscript><p class="console__empty">JavaScript desativado — use <a href="/api/docs">/api/docs</a>.</p></noscript>
+        </div>
+      </aside>
+      <div class="console__main">
+        <div class="console__bar">
+          <span class="console__lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="method" id="reqMethod">GET</span>
+          <span class="console__path" id="reqPath">/api/v1/carlos</span>
+          <button class="btn btn--sm" id="sendBtn" type="button">{{ t.api_request }} ▶</button>
+        </div>
+        <div class="console__tabs" role="tablist">
+          <button class="console__tab is-on" data-tab="code" type="button">{{ t.api_code_tab }}</button>
+          <button class="console__tab" data-tab="response" type="button">{{ t.api_response_tab }}</button>
+          <span class="console__status" id="resStatus" aria-live="polite"></span>
+        </div>
+        <pre class="console__out" id="consoleOut" aria-live="polite"><code></code></pre>
+      </div>
+    </div>
+
+    <div class="chess" id="chess">
+      <div class="chess__frame">
+        <div class="board" id="board" role="grid" aria-label="{{ 'Tabuleiro de xadrez' if lang == 'pt' else 'Chess board' }}"></div>
+      </div>
+      <div class="chess__side">
+        <p class="eyebrow">{{ t.chess_eyebrow }}</p>
+        <h3 class="h3">{{ t.chess_title }}</h3>
+        <p class="chess__sub">{{ t.chess_sub }}</p>
+        <p class="chess__status" id="chessStatus" role="status" aria-live="polite">{{ t.chess_status }}</p>
+        <ol class="chess__log" id="chessLog" reversed aria-label="{{ 'Lances' if lang == 'pt' else 'Moves' }}"></ol>
+        <div class="chess__actions">
+          <button class="btn btn--ghost btn--sm" data-chess="undo" type="button">{{ t.chess_undo }}</button>
+          <button class="btn btn--sm" data-chess="new" type="button">{{ t.chess_new }}</button>
+        </div>
+        <p class="chess__foot">{{ t.chess_you }} · {{ t.chess_me }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section section--alt" data-section="skills">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow">{{ t.skills_eyebrow }}</p>
+        <h2 class="h2">{{ t.skills_title }}</h2>
+      </div>
+    </div>
+    <div class="skills">
+      {% for card in skills %}
+      <article class="skills__card">
+        <h3>{{ card.title[lang] }}</h3>
+        <ul>{% for item in card["items"] %}<li>{{ item }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="edu">
+      <p class="eyebrow">{{ t.edu_eyebrow }}</p>
+      <h2 class="h2 h2--sm">{{ t.edu_title }}</h2>
+      <ul class="edu__list">
+        {% for item in education %}
+        <li><span>{{ item.year }}</span><strong>{{ item.title[lang] }}</strong><em>{{ item.place[lang] if item.place is mapping else item.place }}</em></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="section" data-section="contato">
+  <div class="wrap contact">
+    <div class="contact__intro">
+      <p class="eyebrow">{{ t.contact_eyebrow }}</p>
+      <h2 class="h2">{{ t.contact_title }}</h2>
+      <p>{{ t.contact_sub }}</p>
+      <ul class="contact__links">
+        <li><a class="link" href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+        <li><a class="link" href="{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+        <li><a class="link" href="{{ profile.github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        <li><a class="link" href="{{ profile.whatsapp }}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="contact__form">
+      {% if protocolo %}
+      <p class="flash flash--ok" role="status">
+        {{ t.form_ok }} <strong>{{ protocolo }}</strong>. {{ t.form_ok_tail }}
+      </p>
+      {% endif %}
+      {% if form_errors and 'limite' in form_errors %}<p class="flash flash--err" role="alert">{{ t.form_err.limite }}</p>{% endif %}
+
+      <form method="post" action="/contato?lang={{ lang }}" novalidate>
+        <input type="hidden" name="lang" value="{{ lang }}">
+        <div class="field">
+          <label for="nome">{{ t.form.nome }}</label>
+          <input id="nome" name="nome" type="text" maxlength="80" required
+                 value="{{ (form_values.nome if form_values else '') | e }}"
+                 aria-invalid="{{ 'true' if form_errors and 'nome' in form_errors else 'false' }}">
+          {% if form_errors and 'nome' in form_errors %}<p class="err">{{ t.form_err.nome }}</p>{% endif %}
+        </div>
+        <div class="field">
+          <label for="email">{{ t.form.email }}</label>
+          <input id="email" name="email" type="email" maxlength="160" required
+                 value="{{ (form_values.email if form_values else '') | e }}"
+                 aria-invalid="{{ 'true' if form_errors and 'email' in form_errors else 'false' }}">
+          {% if form_errors and 'email' in form_errors %}<p class="err">{{ t.form_err.email }}</p>{% endif %}
+        </div>
+        <div class="field">
+          <label for="assunto">{{ t.form.assunto }} <small>({{ t.form.optional }})</small></label>
+          <input id="assunto" name="assunto" type="text" maxlength="60"
+                 value="{{ (form_values.assunto if form_values else '') | e }}">
+        </div>
+        <div class="field">
+          <label for="mensagem">{{ t.form.mensagem }}</label>
+          <textarea id="mensagem" name="mensagem" rows="5" minlength="10" maxlength="2000" required
+                    aria-invalid="{{ 'true' if form_errors and 'mensagem' in form_errors else 'false' }}">{{ (form_values.mensagem if form_values else '') | e }}</textarea>
+          {% if form_errors and 'mensagem' in form_errors %}<p class="err">{{ t.form_err.mensagem }}</p>{% endif %}
+        </div>
+        <div class="trap" aria-hidden="true">
+          <label for="site">site</label>
+          <input id="site" name="site" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="consentimento" value="1" required>
+          <span>{{ t.form.consent }} <a href="/privacidade">{{ t.privacy }}</a></span>
+        </label>
+        {% if form_errors and 'consentimento' in form_errors %}<p class="err">{{ t.form_err.consentimento }}</p>{% endif %}
+        <button class="btn" type="submit">{{ t.form.send }} →</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script defer src="{{ asset('js/playground.js') }}"></script>
+<script defer src="{{ asset('js/chess.js') }}"></script>
+{% endblock %}

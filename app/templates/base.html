@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="{{ t.lang }}" data-lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0b10">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="alternate" hreflang="{{ t.lang }}" href="{{ canonical }}">
+  <link rel="alternate" hreflang="{{ alt_lang }}" href="{{ alt_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:locale" content="{{ 'pt_BR' if lang == 'pt' else 'en_US' }}">
+  <meta property="og:image" content="{{ asset('img/foto.jpg') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <script defer src="{{ asset('js/main.js') }}"></script>
+  {% block head %}{% endblock %}
+</head>
+<body data-page="{{ page }}">
+  <a class="skip" href="#conteudo">{{ t.skip }}</a>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__hud">
+      <span>CH//BOOT_SEQ</span>
+      <span>v1.0 · Rio de Janeiro</span>
+    </div>
+    <div class="boot__inner">
+      <p class="boot__quote" id="bootQuote">{{ quote[0] }}</p>
+      <p class="boot__author">— {{ quote[1] }}</p>
+      <p class="boot__terminal" id="bootTerminal">&gt; inicializando uvicorn…</p>
+    </div>
+    <div class="boot__foot">
+      <span id="bootCount">000</span><span>%</span>
+      <span class="boot__hint">clique para pular</span>
+    </div>
+    <div class="boot__bar"><span id="bootBar"></span></div>
+  </div>
+
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <div class="hud" aria-hidden="true">
+    <span class="hud__c hud__c--tl"></span><span class="hud__c hud__c--tr"></span>
+    <span class="hud__c hud__c--bl"></span><span class="hud__c hud__c--br"></span>
+    <span class="hud__xy" id="hudXY">x 0000 · y 0000</span>
+    <span class="hud__state"><span id="hudSection">[01/07] início</span> · <span id="hudPct">000</span>%</span>
+    <span class="hud__clock" id="hudClock">--:--:--</span>
+  </div>
+
+  <header class="head">
+    <a class="brand" href="/" aria-label="{{ profile.nome }} — início">
+      <span class="brand__mark" aria-hidden="true">CH</span>
+      <span class="brand__name">{{ profile.nome }}</span>
+    </a>
+    <nav class="nav" aria-label="{{ 'Navegação principal' if lang == 'pt' else 'Primary navigation' }}">
+      <a href="/#sobre">{{ t.nav.sobre }}</a>
+      <a href="/#experiencia">{{ t.nav.experiencia }}</a>
+      <a href="/#projetos">{{ t.nav.projetos }}</a>
+      <a href="/#api">{{ t.nav.api }}</a>
+    </nav>
+    <div class="head__tools">
+      <a class="lang" href="{{ request.url.path }}?lang={{ alt_lang }}"
+         hreflang="{{ alt_lang }}" aria-label="Switch language">{{ 'EN' if lang == 'pt' else 'PT' }}</a>
+      <a class="btn btn--sm" href="/#contato"><span>{{ t.nav.contato }}</span></a>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    {% block main %}{% endblock %}
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__row">
+      <p>© <span id="year">{{ year }}</span> {{ profile.nome }}</p>
+      <p class="foot__note">{{ t.footer_note }}</p>
+      <a href="/privacidade">{{ t.privacy }}</a>
+      <a href="/#inicio">{{ t.top }}</a>
+    </div>
+  </footer>
+
+  <noscript><style>.boot{display:none}</style></noscript>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block main %}
+<article class="section prose" data-section="privacidade">
+  <div class="wrap prose__wrap">
+    <a class="link" href="/">← {{ 'início' if lang == 'pt' else 'home' }}</a>
+    <p class="eyebrow">&gt; aviso de privacidade · versão 2026-11</p>
+    <h1 class="h1">{{ t.privacy }}</h1>
+
+    {% if lang != 'pt' %}
+    <p class="note">This notice is provided in Portuguese, the language of the jurisdiction
+    where the data controller is established. The summary: the only personal data collected is
+    what you type in the contact form (name, email, optional subject, message, timestamp and
+    consent version); it is used solely to answer you, stored on this site's server for
+    {{ retention_days }} days and never shared or used for analytics. Write to
+    <a class="link" href="mailto:{{ profile.email }}">{{ profile.email }}</a> for any request.</p>
+    {% endif %}
+
+    <h2>Quem trata os dados</h2>
+    <p>Controlador: {{ profile.nome_completo }}, pessoa física, Rio de Janeiro — Brasil.
+    Contato para qualquer assunto de privacidade: <a class="link" href="mailto:{{ profile.email }}">{{ profile.email }}</a>.
+    Não há encarregado (DPO) distinto: o próprio controlador responde pelas solicitações.</p>
+
+    <h2>Quais dados são coletados</h2>
+    <ul>
+      <li><strong>Formulário de contato:</strong> nome, e-mail, assunto (opcional) e mensagem — exatamente o que você digita, mais data/hora do envio e a versão do texto de consentimento aceito.</li>
+      <li><strong>Limitação de abuso:</strong> o endereço IP é processado em memória, transformado em um resumo criptográfico temporário para contar envios por hora. O IP não é gravado no banco de dados nem em log de aplicação.</li>
+      <li><strong>Preferência de idioma:</strong> um cookie <code>lang</code> (pt/en), gravado no seu navegador por até um ano.</li>
+      <li><strong>Não há</strong> analytics, pixels, rastreadores de terceiros, fontes externas ou formulário de newsletter.</li>
+    </ul>
+
+    <h2>Para que e com qual base legal</h2>
+    <p>Os dados do formulário são usados apenas para responder à sua mensagem e, se houver conversa
+    profissional, dar seguimento a ela. A base legal é o <strong>seu consentimento</strong>
+    (art. 7º, I, da LGPD), manifestado na caixa de seleção do formulário e registrado junto com a
+    versão do aviso. Sem esse consentimento, a mensagem não é gravada.</p>
+
+    <h2>Por quanto tempo</h2>
+    <p>As mensagens são mantidas por até <strong>{{ retention_days }} dias</strong> e depois eliminadas
+    por rotina automática. Você pode pedir a eliminação antes disso a qualquer momento.</p>
+
+    <h2>Com quem são compartilhados</h2>
+    <p>Com ninguém. Não há venda, cessão ou enriquecimento de dados. O site roda em servidor próprio
+    contratado para hospedagem, que mantém logs técnicos de acesso (endereço IP, data/hora, agente)
+    por conta própria, com prazo definido pelo provedor — esses logs não são acessados por este site
+    nem cruzados com o formulário.</p>
+
+    <h2>Seus direitos</h2>
+    <p>Você pode solicitar confirmação de tratamento, acesso, correção, portabilidade, eliminação,
+    informação sobre compartilhamento e revogação do consentimento (art. 18 da LGPD). Basta escrever
+    para <a class="link" href="mailto:{{ profile.email }}">{{ profile.email }}</a> com o protocolo
+    recebido no envio. O prazo de resposta é de até 15 dias.</p>
+
+    <h2>Segurança</h2>
+    <p>O site é servido por HTTPS, o banco fica no servidor da aplicação sem exposição pública e o
+    acesso é restrito. A aplicação não registra e-mail, nome ou mensagem em log. Ainda assim, nenhum
+    sistema é imune: se houver incidente com risco relevante, os titulares afetados serão comunicados.</p>
+
+    <h2>Mudanças neste aviso</h2>
+    <p>Cada versão recebe uma data e um identificador (hoje, <code>2026-11</code>). Mudança de
+    finalidade ou de base legal exige novo consentimento e não retroage.</p>
+
+    <p class="note">Este texto descreve o que o código deste site faz. Não é parecer jurídico.</p>
+  </div>
+</article>
+{% endblock %}
