@@ -56,8 +56,8 @@ class PortfolioStaticSiteTests(unittest.TestCase):
         cls.privacy_visible_text = " ".join(cls.privacy_parser.text)
 
     def test_profile_avoids_unverified_skill_ratings_and_project_counts(self):
-        self.assertIn("Analista de Dados", self.html)
-        self.assertNotRegex(self.html, r"\b\d{1,3}%\b")
+        self.assertIn("Engenheiro de Software", self.html)
+        self.assertNotRegex(self.html, r"\b\d{1,3}%")
         self.assertNotIn("6+", self.html)
         self.assertNotIn("10+", self.html)
         self.assertNotIn("Técnico N2 – Montreal Informática", self.html)
