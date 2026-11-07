@@ -229,3 +229,19 @@ def test_robots_disallows_api(client):
 
 def test_health(client):
     assert client.get("/health").json() == {"status": "ok"}
+
+
+def test_palette_can_be_selected_and_is_remembered(client):
+    default = client.get("/").text
+    assert 'data-paleta="2"' in default
+
+    first = client.get("/?paleta=1")
+    assert 'data-paleta="1"' in first.text
+    assert client.cookies.get("paleta") == "1"
+
+    # sem query string, o cookie mantém a escolha
+    assert 'data-paleta="1"' in client.get("/").text
+
+
+def test_unknown_palette_falls_back_to_default(client):
+    assert 'data-paleta="2"' in client.get("/?paleta=9").text

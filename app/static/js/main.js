@@ -164,6 +164,9 @@
 
   function createScene(canvasEl, ctx) {
     const SHAPES = 5;
+    // a cor das partículas vem da paleta ativa (--accent-rgb)
+    const rawAccent = getComputedStyle(document.documentElement).getPropertyValue("--accent-rgb").trim();
+    const [ar, ag, ab] = (rawAccent || "2 151 222").split(/[\s,]+/).map(Number);
     let width = 0, height = 0, dpr = 1;
     let count = 0;
     let positions, targets, seeds;
@@ -277,7 +280,7 @@
 
         const depth = Math.max(0.06, Math.min(1, (2.2 - z) / 3.4));
         const size = depth > 0.7 ? 1.8 : 1.2;
-        ctx.fillStyle = `rgba(${155 - Math.round(depth * 40)}, ${226 - Math.round(depth * 30)}, 60, ${0.10 + depth * 0.55})`;
+        ctx.fillStyle = `rgba(${ar}, ${ag}, ${ab}, ${0.08 + depth * 0.5})`;
         ctx.fillRect(sx, sy, size, size);
       }
       raf = requestAnimationFrame(frame);

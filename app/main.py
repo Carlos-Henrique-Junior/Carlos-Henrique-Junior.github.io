@@ -131,6 +131,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         cookie = request.cookies.get("lang")
         return cookie if cookie in content.STRINGS else "pt"
 
+    def palette_of(request: Request) -> str:
+        """Paleta 1 (#000/#ECD3B5/#E9E9E9) ou 2 (#02070A/#0297DE/#FC734D)."""
+        wanted = request.query_params.get("paleta")
+        if wanted in {"1", "2"}:
+            return wanted
+        cookie = request.cookies.get("paleta")
+        return cookie if cookie in {"1", "2"} else "2"
+
     def base_context(request: Request, page: str, title: str, description: str) -> dict:
         lang = lang_of(request)
         other = "en" if lang == "pt" else "pt"
@@ -148,6 +156,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "description": description,
             "quote": random.choice(content.QUOTES),
             "page": page,
+            "paleta": palette_of(request),
         }
 
     def render(request: Request, template: str, page: str, title: str, description: str,
@@ -157,6 +166,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         response = templates.TemplateResponse(request, template, ctx, status_code=status_code)
         if request.query_params.get("lang") in content.STRINGS:
             response.set_cookie("lang", ctx["lang"], max_age=31536000, httponly=True, samesite="lax")
+        if request.query_params.get("paleta") in {"1", "2"}:
+            response.set_cookie("paleta", ctx["paleta"], max_age=31536000, httponly=True, samesite="lax")
         return response
 
     def page_title(lang: str) -> str:
