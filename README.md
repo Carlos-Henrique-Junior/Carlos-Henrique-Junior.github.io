@@ -64,7 +64,7 @@ app/
   engine.py      xadrez: regras (python-chess) + negamax alfa-beta
   store.py       contato em SQLite (SQLAlchemy 2), com expurgo por retenção
   templates/     Jinja2 (base, index, projeto, privacidade, 404)
-  static/        CSS, JS, imagem — servidos com hash de conteúdo na URL
+  static/        CSS, JS, fontes self-hosted, imagem — servidos com hash de conteúdo na URL
 tests/           pytest (API, páginas, xadrez, LGPD, cabeçalhos)
 ```
 

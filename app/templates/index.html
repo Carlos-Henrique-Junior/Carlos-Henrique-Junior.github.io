@@ -88,11 +88,16 @@
     <div class="projects">
       {% for p in projects %}
       <article class="card">
-        <p class="card__index">{{ p.index }} / {{ p.kind }}</p>
-        <h3 class="card__title"><a href="/projetos/{{ p.slug }}">{{ p.title[lang] }}</a></h3>
-        <p class="card__desc">{{ p.summary[lang] }}</p>
-        <ul class="tags">{% for tech in p.stack %}<li>{{ tech }}</li>{% endfor %}</ul>
-        <a class="card__more" href="/projetos/{{ p.slug }}">{{ t.proj_open }} →</a>
+        <div class="card__meta">
+          <p class="card__index">{{ p.index }} / {{ p.kind }}</p>
+          <p class="card__year">{{ p.year }}</p>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title"><a href="/projetos/{{ p.slug }}">{{ p.title[lang] }}</a></h3>
+          <p class="card__desc">{{ p.summary[lang] }}</p>
+          <ul class="tags">{% for tech in p.stack %}<li>{{ tech }}</li>{% endfor %}</ul>
+          <a class="card__more" href="/projetos/{{ p.slug }}">{{ t.proj_open }} →</a>
+        </div>
       </article>
       {% endfor %}
     </div>
