@@ -1,0 +1,25 @@
+# Carlos Henrique — Portfólio
+
+> Engenheiro de software com foco em IA generativa, Python, FastAPI, LLMs e dados. Bacharel em Ciência da Computação (2025) e pós-graduado em Inteligência Artificial e Machine Learning (2026).
+
+## Páginas
+
+- [Início](https://carlos-henrique-junior.github.io/): apresentação profissional, experiências, projetos, competências, formação e contato.
+- [Privacidade](https://carlos-henrique-junior.github.io/privacidade.html): como o site trata informações, sem cookies, analytics ou formulários.
+
+## Projetos
+
+- [MADR — acervo digital de livros](https://github.com/Carlos-Henrique-Junior/madr): API em Python e FastAPI com PostgreSQL, Docker e CI.
+- [Desafio Backend Voluntários](https://github.com/Carlos-Henrique-Junior/desafio-backend-voluntarios): API com Dockerfile multi-stage, testes e pipeline de CI.
+- [API de produtos com autenticação](https://github.com/Carlos-Henrique-Junior/products-api): API FastAPI com autenticação e banco relacional.
+- [Monitoramento de mercado — CFTC](https://github.com/Carlos-Henrique-Junior/monitoramento-cftc): painel de acompanhamento de posições do mercado futuro.
+- [Dashboard de salários na área de dados](https://github.com/Carlos-Henrique-Junior/Dashboard_de_Salarios_Area_de_Dados): análise de faixas salariais com dados públicos.
+
+## Perfis
+
+- [GitHub](https://github.com/Carlos-Henrique-Junior)
+- [LinkedIn](https://www.linkedin.com/in/carlos-henrique-junior)
+
+## Contato
+
+E-mail: chjunior05@gmail.com
